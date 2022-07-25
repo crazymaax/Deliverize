@@ -13,8 +13,11 @@ function Product() {
     const [actualProduct, setActualProduct] = useState()
 
     useEffect(() => {
-        const product = listOfProducts.find(product => product.nm_product = slug)
-        setActualProduct(product)
+        if(listOfProducts){
+
+            const product = listOfProducts.find(product => product.nm_product = slug)
+            setActualProduct(product)
+        }
     }, [listOfProducts])
 
     return (
