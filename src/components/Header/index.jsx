@@ -1,26 +1,61 @@
+import "./styles.scss"
+
 import DeliverizeLogo from "../../assets/deliverizeLogo.svg"
 import AccountIcon from "../../assets/accountIcon.svg"
 import CartIcon from "../../assets/cartIcon.svg"
-
+import ArrowIcon from "../../assets/arrowIcon.svg"
 
 function Header() {
+
+    const handleArrowClick = () => {
+        const header = document.querySelector("header")
+        header.classList.toggle("rolled")
+    }
+
     return (
-        <header>
-            <img src={DeliverizeLogo} alt="Deliverize" />
+        <header className="headerContainer">
 
-            <label>Entrega:</label>
-            <input type="text" />
-
-            <input type="text" placeholder="Busqye por estabelecimentos ou produtos" />
-
-            <div>
-                <img src={AccountIcon} alt="Ícone do usúario" />
-                <span>Entrar</span>
+            <div
+                className="headerContainer__leftArrowSmallDevice"
+                onClick={handleArrowClick}
+            >
+                <img src={ArrowIcon} alt="Seta para abrir menu" />
             </div>
 
-            <div>
-                <img src={CartIcon} alt="Ícone do carrinho" />
-                <span>Carrinho</span>
+            <div className="headerContainer__deliverizeLogo">
+
+                <img src={DeliverizeLogo} alt="Deliverize" />
+            </div>
+
+            <div className="headerContainer__userInfo">
+
+                <div className="userInfo__location">
+                    <label>Entrega:</label>
+                    <span>Rua tal</span>
+                </div>
+
+                <input
+                    type="text"
+                    placeholder="Busque por estabelecimentos ou produtos"
+                    className="userInfo__searchbar"
+                />
+
+                <div className="userInfo__buttons">
+                    <img src={AccountIcon} alt="Ícone do usúario" />
+                    <span>Entrar</span>
+                </div>
+
+                <div className="userInfo__buttons">
+                    <img src={CartIcon} alt="Ícone do carrinho" />
+                    <span>Carrinho</span>
+                </div>
+
+                <div
+                    className="headerContainer__rightArrowSmallDevice"
+                    onClick={handleArrowClick}
+                >
+                    <img src={ArrowIcon} alt="Seta para abrir menu" />
+                </div>
             </div>
         </header>
     )
