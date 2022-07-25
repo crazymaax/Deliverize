@@ -5,6 +5,8 @@ import AccountIcon from "../../assets/accountIcon.svg"
 import CartIcon from "../../assets/cartIcon.svg"
 import ArrowIcon from "../../assets/arrowIcon.svg"
 
+import { Link } from "react-router-dom"
+
 function Header() {
 
     const handleArrowClick = () => {
@@ -22,10 +24,9 @@ function Header() {
                 <img src={ArrowIcon} alt="Seta para abrir menu" />
             </div>
 
-            <div className="headerContainer__deliverizeLogo">
-
+            <Link className="headerContainer__deliverizeLogo" to="/">
                 <img src={DeliverizeLogo} alt="Deliverize" />
-            </div>
+            </Link>
 
             <div className="headerContainer__userInfo">
 
