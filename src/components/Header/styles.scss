@@ -1,0 +1,114 @@
+@use "../../styles/utilities";
+
+.headerContainer {
+    height: 80px;
+    padding: 1rem 2.5rem;
+    background-color: utilities.$gray-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: relative;
+
+    .headerContainer__deliverizeLogo {
+        width: 100%;
+/*         position: absolute;
+        left: 15%; */
+        
+        img {
+            width: 14rem;
+        }
+    }
+
+    .headerContainer__leftArrowSmallDevice {
+        position: absolute;
+        left: 1rem;
+    }
+    
+    .headerContainer__leftArrowSmallDevice, .headerContainer__rightArrowSmallDevice {
+        img {
+            width: 1.5rem;
+        }
+
+    }
+    
+    .headerContainer__userInfo {
+        width: 100%;
+        max-width: 850px;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+/*         position: absolute;
+        left: 100vw; */
+
+        .userInfo__location {
+            width: 100%;
+            max-width: 230px;
+            padding: 0.5rem;
+            border-radius: 4px;
+            background-color: utilities.$white-color;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+            label {
+                color: utilities.$red-color;
+            }
+        }
+
+        .userInfo__searchbar {
+            width: 100%;
+            max-width: 354px;
+            padding: 1rem;
+
+            border-radius: 4px;
+            border: 1px solid utilities.$red-color-2;
+            color: utilities.$grayDarker-color-2;
+            
+            &::placeholder {
+                color: utilities.$grayDarker-color-2;
+            }
+        }
+
+        .userInfo__buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+
+            img {
+                width: 2rem;
+            }
+            
+            span {
+                color: utilities.$red-color-2;
+            }
+        }
+    }
+    
+    @media screen and (min-width: 768px) {
+        justify-content: space-between;
+
+        .headerContainer__rightArrowSmallDevice, .headerContainer__leftArrowSmallDevice {
+            display: none;
+        }
+
+        .headerContainer__userInfo {
+            display: flex;
+        }
+        
+    }
+}
+
+.rolled {
+    transition: transform 2s ease-in-out;
+    transform: translate(-100vh,0px);
+
+    .headerContainer__userInfo {
+        
+    }
+}
