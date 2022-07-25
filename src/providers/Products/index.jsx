@@ -5,7 +5,7 @@ const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
 
-  const [listOfProducts, setListOfProducts] = useState([])
+  const [listOfProducts, setListOfProducts] = useState()
 
   const getProducts = async () => {
     const response = await listProducts()
