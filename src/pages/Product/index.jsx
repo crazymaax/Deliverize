@@ -12,26 +12,26 @@ import { useProducts } from "../../providers/Products";
 
 function Product() {
 
-    const { listOfProducts } = useProducts()
+    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, updateProductAmount } = useProducts()
 
     const { slug } = useParams();
-    const [actualProduct, setActualProduct] = useState()
 
     useEffect(() => {
         if (listOfProducts) {
-
             const product = listOfProducts.find(product => product.nm_product = slug)
             setActualProduct(product)
+
+            const additionals = product.ingredients[0].itens
+            setAdditionals(additionals)
         }
     }, [listOfProducts])
-    console.log(listOfProducts)
 
-    const handleProductIncrement = () => {
-
+    const handleProductIncrement = (amount, additional) => {
+        updateProductAmount(amount + 1, additional)
     }
 
-    const handleProductDecrement = () => {
-
+    const handleProductDecrement = (amount, additional) => {
+        updateProductAmount(amount - 1, additional)
     }
 
     return (
@@ -62,37 +62,43 @@ function Product() {
                             <strong>Adicionar Ingredientes</strong>
                             <span>Até {actualProduct.ingredients[0].max_itens} ingredientes</span>
                         </div>
-                        {actualProduct.ingredients[0].itens.map((additional) => (
-                            <div className="additional__item" key={additional.id}>
-                                <div className="item__data">
-                                    <label>{additional.nm_item}</label>
-                                    <span>+ R$ {additional.vl_item}</span>
+                        {actualProduct.ingredients[0].itens.map((additional) => {
+                            if(!additional.amount){
+                                additional.amount = 0;
+                            }
+                            return (
+
+                                <div className="additional__item" key={additional.id}>
+                                    <div className="item__data">
+                                        <label>{additional.nm_item}</label>
+                                        <span>+ R$ {additional.vl_item}</span>
+                                    </div>
+
+                                    <div className="item__ammount">
+                                        <button
+                                            type="button"
+                                            id={additional.id}
+                                            disabled={currentAdditionals[additional.nm_item] < 1}
+                                            onClick={() => handleProductDecrement(currentAdditionals[additional.nm_item], additional.nm_item)}
+                                        >
+                                            <img src={cartSubIcon} alt="ícone de Subtrair" />
+                                        </button>
+                                        <input
+                                            type="number"
+                                            readOnly
+                                            value={currentAdditionals[additional.nm_item]}
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => handleProductIncrement(currentAdditionals[additional.nm_item], additional.nm_item)}
+                                        >
+                                            <img src={cartAddIcon} alt="ícone de Adicionar" />
+                                        </button>
+                                    </div>
                                 </div>
 
-                                <div className="item__ammount">
-                                    <button
-                                        type="button"
-                                        id={1}
-                                        disabled={actualProduct.ingredients[0] <= 1}
-                                        onClick={() => handleProductDecrement(product)}
-                                    >
-                                        <img src={cartSubIcon} alt="ícone de Subtrair" />
-                                    </button>
-                                    <input
-                                        type="number"
-                                        readOnly
-                                        value={1}
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => handleProductIncrement(product)}
-                                    >
-                                        <img src={cartAddIcon} alt="ícone de Adicionar" />
-                                    </button>
-                                </div>
-                            </div>
-
-                        ))}
+                            )
+                        })}
                         <div className="additional__yellowContainer additional__yellowContainer--cutlery">
                             <span>Precisa de Talher?</span>
                             <div>
@@ -112,27 +118,27 @@ function Product() {
                         </div>
 
                         <div className="additional__footer">
-                        <div className="item__ammount">
-                                    <button
-                                        type="button"
-                                        id={1}
-                                        disabled={actualProduct.ingredients[0] <= 1}
-                                        onClick={() => handleProductDecrement(product)}
-                                    >
-                                        <img src={cartSubIcon} alt="ícone de Subtrair" />
-                                    </button>
-                                    <input
-                                        type="number"
-                                        readOnly
-                                        value={1}
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => handleProductIncrement(product)}
-                                    >
-                                        <img src={cartAddIcon} alt="ícone de Adicionar" />
-                                    </button>
-                                </div>
+                            <div className="item__ammount">
+                                <button
+                                    type="button"
+                                    id={1}
+                                    disabled={actualProduct.ingredients[0] <= 1}
+                                    onClick={() => handleProductDecrement()}
+                                >
+                                    <img src={cartSubIcon} alt="ícone de Subtrair" />
+                                </button>
+                                <input
+                                    type="number"
+                                    readOnly
+                                    value={1}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => handleProductIncrement()}
+                                >
+                                    <img src={cartAddIcon} alt="ícone de Adicionar" />
+                                </button>
+                            </div>
 
                             <button type="submit">Adicionar</button>
                         </div>
