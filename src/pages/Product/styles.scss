@@ -203,7 +203,13 @@
     button {
         background-color: transparent;
         border: transparent;
-        
+
+        &:disabled {
+            img {
+                filter: grayscale(90%);
+                cursor: not-allowed;
+            }
+          }
     }
 }
 
