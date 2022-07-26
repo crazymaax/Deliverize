@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { listProducts } from "../../services/products";
 
+import { toast } from "react-toastify"
+
 const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
@@ -43,6 +45,7 @@ export const ProductsProvider = ({ children }) => {
       
       if (amount < 0) {
         /* O input fica disabled quando o valor chega a 0, é apenas mais uma camada de verificação, caso o amount seja enviado com um valor indesejado. */
+        toast.error("Erro na alteração de quantidade do produto")
         return
       }
 
@@ -54,14 +57,14 @@ export const ProductsProvider = ({ children }) => {
       const sumValues = Object.values(newData).reduce((a, b) => a + b); // Somatória de todos os adicionais.
       
       if(sumValues > maxItens){ // Se o valor de adicional for superior ao máximo permitido, cancela a ação.
+        toast.error(`Este produto aceita apenas ${maxItens} adicionais.`)
         return
       }
 
       setCurrentAdditionals(newData)
     
-
     } catch {
-      console.log("deu pau")
+      toast.error("Erro na alteração de quantidade do produto")
     }
   };
 
