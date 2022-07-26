@@ -1,0 +1,43 @@
+@use "../../styles/utilities";
+
+.homePageContainer {
+    padding: 1rem 2.5rem;
+}
+
+.homePageContainer__title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: utilities.$red-color;
+}
+
+.homePageContainer__ProductList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.ProductList__Product {
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    border: 1px solid utilities.$grayDarker-color-2;
+    border-radius: 4px;
+    padding: 0.5rem;
+    color: utilities.$grayDarker-color;
+
+    img {
+        width: 7.5rem;
+        height: 7.5rem;
+        border: 2px solid utilities.$grayDarker-color;
+    }
+
+    span {
+        color: utilities.$orange-color;
+        font-weight: 500;
+    }
+}
