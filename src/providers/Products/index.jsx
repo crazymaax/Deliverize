@@ -80,6 +80,8 @@ export const ProductsProvider = ({ children }) => {
         setActualProduct,
         currentAdditionals,
         setAdditionals,
+        cart,
+        setCart,
         updateProductAmount
       }}
     >

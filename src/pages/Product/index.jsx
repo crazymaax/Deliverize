@@ -12,7 +12,10 @@ import { useProducts } from "../../providers/Products";
 
 function Product() {
 
-    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, updateProductAmount } = useProducts()
+    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, cart, setCart, updateProductAmount } = useProducts()
+
+    const [quantityOfItens, setQuantityOfItens] = useState(1)
+    const [withCutlery, setWithCutlery] = useState(false)
 
     const { slug } = useParams();
 
@@ -32,6 +35,31 @@ function Product() {
 
     const handleProductDecrement = (amount, additional) => {
         updateProductAmount(amount - 1, additional)
+    }
+
+    const handleAddProductToCart = (e) => {
+        e.preventDefault()
+        
+        let price = actualProduct.vl_discount * quantityOfItens
+
+        const itens = actualProduct.ingredients[0].itens
+
+        for(let i = 0; i < itens.length; i++){
+            const currentAdditional = currentAdditionals[itens[i].nm_item]
+            price += currentAdditional * itens[i].vl_item
+        }
+        
+        const data = {
+            additionals: currentAdditionals,
+            name: actualProduct.nm_product,
+            quantity: quantityOfItens,
+            cutlery: withCutlery,
+            finalPrice: price,
+        }
+
+        const updatedCart = [...cart, data]
+        setCart(updatedCart)
+        console.log(cart)
     }
 
     return (
@@ -57,13 +85,16 @@ function Product() {
 
                     </div>
 
-                    <form className="ProductPageContainer__additional">
+                    <form
+                        className="ProductPageContainer__additional"
+                        onSubmit={handleAddProductToCart}
+                    >
                         <div className="additional__yellowContainer additional__yellowContainer--ingredients">
                             <strong>Adicionar Ingredientes</strong>
                             <span>Até {actualProduct.ingredients[0].max_itens} ingredientes</span>
                         </div>
                         {actualProduct.ingredients[0].itens.map((additional) => {
-                            if(!additional.amount){
+                            if (!additional.amount) {
                                 additional.amount = 0;
                             }
                             return (
@@ -103,13 +134,20 @@ function Product() {
                             <span>Precisa de Talher?</span>
                             <div>
                                 <label>
-                                    <input type="radio" name="cutlery" />
+                                    <input
+                                    type="radio"
+                                    name="cutlery"
+                                    onChange={() => setWithCutlery(true)}/>
                                     <span>
                                         Sim
                                     </span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="cutlery" />
+                                    <input
+                                    type="radio"
+                                    name="cutlery"
+                                    onChange={() => setWithCutlery(false)}
+                                    />
                                     <span>
                                         Não
                                     </span>
@@ -122,19 +160,19 @@ function Product() {
                                 <button
                                     type="button"
                                     id={1}
-                                    disabled={actualProduct.ingredients[0] <= 1}
-                                    onClick={() => handleProductDecrement()}
+                                    disabled={quantityOfItens <= 1}
+                                    onClick={() => setQuantityOfItens(quantityOfItens - 1)}
                                 >
                                     <img src={cartSubIcon} alt="ícone de Subtrair" />
                                 </button>
                                 <input
                                     type="number"
                                     readOnly
-                                    value={1}
+                                    value={quantityOfItens}
                                 />
                                 <button
                                     type="button"
-                                    onClick={() => handleProductIncrement()}
+                                    onClick={() => setQuantityOfItens(quantityOfItens + 1)}
                                 >
                                     <img src={cartAddIcon} alt="ícone de Adicionar" />
                                 </button>
