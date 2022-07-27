@@ -3,13 +3,18 @@
 .headerContainer {
     height: 80px;
     padding: 1rem 2.5rem;
+
     background-color: utilities.$gray-color;
+    box-shadow: 0px 15px 33px -20px rgba(78,78,78,0.75);
 
     display: flex;
     align-items: center;
     justify-content: center;
     
-    position: relative;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
 
     .headerContainer__deliverizeLogo {
         width: 100%;
@@ -83,6 +88,8 @@
             align-items: center;
             gap: 0.625rem;
 
+            position: relative;
+
             img {
                 width: 2rem;
             }
@@ -104,6 +111,28 @@
             display: flex;
         }
         
+    }
+}
+
+.buttons__cartQuantity {
+    width: 1rem;
+    height: 1rem;
+    padding: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: utilities.$orange-color;
+    border-radius: 50%;
+    
+    position: absolute;
+    top: -12px;
+    right: 61px;
+
+    span {
+        font-size: 10px;
+        color: utilities.$white-color !important;
     }
 }
 

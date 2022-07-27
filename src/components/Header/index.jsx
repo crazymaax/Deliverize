@@ -12,7 +12,7 @@ import { useProducts } from "../../providers/Products"
 
 function Header() {
 
-    const { isCartModalOpen } = useProducts()
+    const { isCartModalOpen, cart } = useProducts()
 
     const handleArrowClick = () => {
         const header = document.querySelector("header")
@@ -53,6 +53,11 @@ function Header() {
 
                 <div className="userInfo__buttons">
                     <img src={CartIcon} alt="Ícone do carrinho" />
+                    {cart.length > 0 && (
+                        <div className="buttons__cartQuantity">
+                            <span>{cart.length}</span>
+                        </div>
+                    )}
                     <span>Carrinho</span>
                 </div>
 
