@@ -7,7 +7,12 @@ import ArrowIcon from "../../assets/arrowIcon.svg"
 
 import { Link } from "react-router-dom"
 
+import PopupModal from "../Modals/PopupModal"
+import { useProducts } from "../../providers/Products"
+
 function Header() {
+
+    const { isCartModalOpen } = useProducts()
 
     const handleArrowClick = () => {
         const header = document.querySelector("header")
@@ -50,6 +55,10 @@ function Header() {
                     <img src={CartIcon} alt="Ícone do carrinho" />
                     <span>Carrinho</span>
                 </div>
+
+                {isCartModalOpen && (
+                    <PopupModal />
+                )}
 
                 <div
                     className="headerContainer__rightArrowSmallDevice"

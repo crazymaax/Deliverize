@@ -1,3 +1,5 @@
+@use "./utilities";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -56,6 +58,14 @@ a {
 
 ol, ul {
 	list-style: none;
+}
+
+li:before {
+    content:"·";
+    font-size:2rem;
+    vertical-align:middle;
+    line-height:20px;
+	color: utilities.$grayDarker-color;
 }
 
 button {
