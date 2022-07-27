@@ -10,6 +10,7 @@ export const ProductsProvider = ({ children }) => {
   const [listOfProducts, setListOfProducts] = useState()
   const [actualProduct, setActualProduct] = useState()
   const [currentAdditionals, setCurrentAdditionals] = useState({})
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false)
   const [cart, setCart] = useState(() => {
     const storagedCart = localStorage.getItem("@Deliverize:cart")
 
@@ -24,6 +25,10 @@ export const ProductsProvider = ({ children }) => {
     const response = await listProducts()
     setListOfProducts(response)
   }
+
+  useEffect(() => {
+    getProducts()
+  }, [])
 
   const setAdditionals = (listOfAdditionals) => {
 
@@ -68,10 +73,6 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    getProducts()
-  }, [])
-
   return (
     <ProductsContext.Provider
       value={{
@@ -80,6 +81,8 @@ export const ProductsProvider = ({ children }) => {
         setActualProduct,
         currentAdditionals,
         setAdditionals,
+        isCartModalOpen,
+        setIsCartModalOpen,
         cart,
         setCart,
         updateProductAmount
