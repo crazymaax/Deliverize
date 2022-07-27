@@ -12,7 +12,7 @@ import { useProducts } from "../../providers/Products";
 
 function Product() {
 
-    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, cart, setCart, updateProductAmount } = useProducts()
+    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, setIsCartModalOpen, cart, setCart, updateProductAmount } = useProducts()
 
     const [quantityOfItens, setQuantityOfItens] = useState(1)
     const [withCutlery, setWithCutlery] = useState(false)
@@ -39,18 +39,29 @@ function Product() {
 
     const handleAddProductToCart = (e) => {
         e.preventDefault()
-        
+
         let price = actualProduct.vl_discount * quantityOfItens
 
         const itens = actualProduct.ingredients[0].itens
 
-        for(let i = 0; i < itens.length; i++){
+        for (let i = 0; i < itens.length; i++) {
             const currentAdditional = currentAdditionals[itens[i].nm_item]
             price += currentAdditional * itens[i].vl_item
         }
-        
+
+        let listOfAdditionals = []
+        for (var item in currentAdditionals) {
+            if (currentAdditionals[item] !== 0) {
+                const data = {
+                    name: item,
+                    quantity: currentAdditionals[item]
+                }
+                listOfAdditionals.push(data)
+            }
+        }
+
         const data = {
-            additionals: currentAdditionals,
+            additionals: listOfAdditionals,
             name: actualProduct.nm_product,
             quantity: quantityOfItens,
             cutlery: withCutlery,
@@ -59,7 +70,7 @@ function Product() {
 
         const updatedCart = [...cart, data]
         setCart(updatedCart)
-        console.log(cart)
+        setIsCartModalOpen(true)
     }
 
     return (
@@ -135,18 +146,18 @@ function Product() {
                             <div>
                                 <label>
                                     <input
-                                    type="radio"
-                                    name="cutlery"
-                                    onChange={() => setWithCutlery(true)}/>
+                                        type="radio"
+                                        name="cutlery"
+                                        onChange={() => setWithCutlery(true)} />
                                     <span>
                                         Sim
                                     </span>
                                 </label>
                                 <label>
                                     <input
-                                    type="radio"
-                                    name="cutlery"
-                                    onChange={() => setWithCutlery(false)}
+                                        type="radio"
+                                        name="cutlery"
+                                        onChange={() => setWithCutlery(false)}
                                     />
                                     <span>
                                         Não
