@@ -13,20 +13,27 @@ import { useProducts } from "../../providers/Products"
 function Header() {
 
     const { isCartModalOpen, cart } = useProducts()
-
-    const handleArrowClick = () => {
+    
+    const handleArrowClick = (target) => {
         const header = document.querySelector("header")
-        header.classList.toggle("rolled")
+        
+        if (target === "leftArrow") {
+            header.style.transform = "translate(calc(-100vw - 2rem),0px)"
+        } else {
+            header.style.transform = "translate(0px,0px)"
+        }
     }
 
     return (
         <header className="headerContainer">
 
-            <div
-                className="headerContainer__leftArrowSmallDevice"
-                onClick={handleArrowClick}
-            >
-                <img src={ArrowIcon} alt="Seta para abrir menu" />
+            <div className="headerContainer__leftArrowSmallDevice" >
+                <img
+                    src={ArrowIcon}
+                    alt="Seta para abrir menu"
+                    id="leftArrow"
+                    onClick={(e) => handleArrowClick(e.target.id)}
+                />
             </div>
 
             <Link className="headerContainer__deliverizeLogo" to="/">
@@ -47,31 +54,39 @@ function Header() {
                 />
 
                 <div className="userInfo__buttons">
-                    <img src={AccountIcon} alt="Ícone do usúario" />
-                    <span>Entrar</span>
-                </div>
 
-                <div className="userInfo__buttons">
-                    <img src={CartIcon} alt="Ícone do carrinho" />
-                    {cart.length > 0 && (
-                        <div className="buttons__cartQuantity">
-                            <span>{cart.length}</span>
-                        </div>
+
+                    <div className="buttons__container">
+                        <img src={AccountIcon} alt="Ícone do usúario" />
+                        <span>Entrar</span>
+                    </div>
+
+                    <div className="buttons__container">
+                        <img src={CartIcon} alt="Ícone do carrinho" />
+                        {cart.length > 0 && (
+                            <div className="buttons__cartQuantity">
+                                <span>{cart.length}</span>
+                            </div>
+                        )}
+                        <span>Carrinho</span>
+                    </div>
+
+                    {isCartModalOpen && (
+                        <PopupModal />
                     )}
-                    <span>Carrinho</span>
-                </div>
 
-                {isCartModalOpen && (
-                    <PopupModal />
-                )}
-
-                <div
-                    className="headerContainer__rightArrowSmallDevice"
-                    onClick={handleArrowClick}
-                >
-                    <img src={ArrowIcon} alt="Seta para abrir menu" />
                 </div>
             </div>
+
+            <div className="headerContainer__rightArrowSmallDevice" >
+                <img
+                    src={ArrowIcon}
+                    alt="Seta para abrir menu"
+                    id="rightArrow"
+                    onClick={(e) => handleArrowClick(e.target.id)}
+                />
+            </div>
+
         </header>
     )
 }
