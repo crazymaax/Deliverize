@@ -7,16 +7,15 @@ import ArrowIcon from "../../assets/arrowIcon.svg"
 
 import { Link } from "react-router-dom"
 
-import PopupModal from "../Modals/PopupModal"
 import { useProducts } from "../../providers/Products"
 
 function Header() {
 
-    const { isCartModalOpen, cart } = useProducts()
-    
+    const { cart } = useProducts()
+
     const handleArrowClick = (target) => {
         const header = document.querySelector("header")
-        
+
         if (target === "leftArrow") {
             header.style.transform = "translate(calc(-100vw - 2rem),0px)"
         } else {
@@ -70,11 +69,6 @@ function Header() {
                         )}
                         <span>Carrinho</span>
                     </div>
-
-                    {isCartModalOpen && (
-                        <PopupModal />
-                    )}
-
                 </div>
             </div>
 
