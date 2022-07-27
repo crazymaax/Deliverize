@@ -11,3 +11,7 @@ $red-color: #D80000;
 $red-color-2: #ED3237;
 $redDarker-color: #BC2E31;
 $white-color: #FFFFFF;
+
+@mixin PagesMarginTop {
+    margin-top: 7rem;
+}
