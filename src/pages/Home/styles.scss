@@ -2,6 +2,7 @@
 
 .homePageContainer {
     padding: 1rem 2.5rem;
+    @include utilities.PagesMarginTop;
 }
 
 .homePageContainer__title {
@@ -13,9 +14,13 @@
 
 .homePageContainer__ProductList {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
+    
+    @media screen and (min-width: 768px) {
+        justify-content: space-between;
+    }
 }
 
 .ProductList__Product {
