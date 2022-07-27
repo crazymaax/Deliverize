@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import ReactLoading from 'react-loading';
 
 import { useProducts } from "../../providers/Products";
+import { formatPrice } from "../../utils/format";
 
 function Product() {
 
@@ -89,8 +90,9 @@ function Product() {
                             <p>{actualProduct.description}</p>
 
                             <div>
-                                <span className="details__price">R$ {actualProduct.vl_discount}</span>
-                                <span className="details__price details__price--dashed">R$ {actualProduct.vl_price}</span>
+                                <span className="details__price">{formatPrice(actualProduct.vl_discount)}</span>
+                                <span className="details__price details__price--dashed"> 
+                                {formatPrice(actualProduct.vl_price)}</span>
                             </div>
                         </div>
 
@@ -113,7 +115,7 @@ function Product() {
                                 <div className="additional__item" key={additional.id}>
                                     <div className="item__data">
                                         <label>{additional.nm_item}</label>
-                                        <span>+ R$ {additional.vl_item}</span>
+                                        <span>+ {formatPrice(additional.vl_item)}</span>
                                     </div>
 
                                     <div className="item__ammount">

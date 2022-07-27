@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import "./styles.scss"
 
 import { useProducts } from "../../../providers/Products"
+import { formatPrice } from "../../../utils/format"
 
 const PopupModal = () => {
 
@@ -34,7 +35,9 @@ const PopupModal = () => {
                             </ul>
                         </>
                     )}
-                    <span className="informations__price">Valor total: R$ {finalPrice}</span>
+                    <span className="informations__price" >
+                        Valor total: {formatPrice(finalPrice)}
+                    </span>
                 </div>
             </div>
         </div>
