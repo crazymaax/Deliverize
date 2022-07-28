@@ -14,7 +14,7 @@ const PopupModal = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsCartModalOpen(false)
-        }, 2000)
+        }, 4000)
     }, [])
 
     return (
