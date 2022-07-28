@@ -63,6 +63,7 @@ export const ProductsProvider = ({ children }) => {
       
       if(sumValues > maxItens){ // Se o valor de adicional for superior ao máximo permitido, cancela a ação.
         toast.error(`Este produto aceita apenas ${maxItens} adicionais.`)
+        toast.clearWaitingQueue();
         return
       }
 
