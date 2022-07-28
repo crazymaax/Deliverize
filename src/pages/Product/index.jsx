@@ -144,29 +144,33 @@ function Product() {
 
                             )
                         })}
-                        <div className="additional__yellowContainer additional__yellowContainer--cutlery">
-                            <span>Precisa de Talher?</span>
-                            <div>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="cutlery"
-                                        onChange={() => setWithCutlery(true)} />
-                                    <span>
-                                        Sim
-                                    </span>
-                                </label>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="cutlery"
-                                        onChange={() => setWithCutlery(false)}
-                                    />
-                                    <span>
-                                        Não
-                                    </span>
-                                </label>
+
+                        <div className="additional__cutleryContainer">
+
+                            <div className="additional__yellowContainer additional__yellowContainer--cutlery">
+                                <span>Precisa de Talher?</span>
                             </div>
+                                <div className="cutleryContainer__cutleryOptions">
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="cutlery"
+                                            onChange={() => setWithCutlery(true)} />
+                                        <span>
+                                            Sim
+                                        </span>
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="cutlery"
+                                            onChange={() => setWithCutlery(false)}
+                                        />
+                                        <span>
+                                            Não
+                                        </span>
+                                    </label>
+                                </div>
                         </div>
 
                         <div className="additional__footer">
@@ -199,7 +203,7 @@ function Product() {
                     {isCartModalOpen && (
                         <PopupModal />
                     )}
-                    
+
                 </>
             ) : <ReactLoading type={"spin"} color={"red"} height={'20%'} width={'20%'} />}
         </main>
