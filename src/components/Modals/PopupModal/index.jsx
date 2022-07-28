@@ -23,7 +23,7 @@ const PopupModal = () => {
             <div className="cartModal__informations">
                 <strong>{name}</strong>
                 <div>
-                    {additionals && (
+                    {additionals.length > 0 && (
                         <>
                             <span>Adicionais:</span>
                             <ul>
