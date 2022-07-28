@@ -33,15 +33,13 @@
     
     .headerContainer__userInfo {
         width: 100%;
-        justify-content: center;
-
+        
         display: flex;
         align-items: center;
         gap: 0.5rem;
 
         .userInfo__location {
-            min-width: 100px;
-            width: 100%;
+            width: 165px;
             max-width: calc(230px - 1rem);
             padding: 0.5rem;
 
@@ -107,11 +105,15 @@
         .headerContainer__userInfo {
             gap: 1.5rem;
         }
+
+        .userInfo__location {
+            width: 100% !important;
+        }
         
     }
     
     @media screen and (min-width: 768px) {
-        width: calc(100vw - 4rem);
+        width: calc(100vw - 5rem);
         gap: 10%;
 
         .headerContainer__deliverizeLogo {
@@ -124,7 +126,7 @@
         }
 
         .headerContainer__userInfo {
-            display: flex;
+            justify-content: flex-end;
 
             .userInfo__searchbar {
                 display: block;
@@ -201,7 +203,7 @@
     
     @media screen and (min-width: 1024px) {
         top: -12px;
-        right: 46px;
+        right: 62px;
         
         span {
             font-size: 12px !important;
