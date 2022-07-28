@@ -1,0 +1,212 @@
+@use "../../styles/utilities";
+
+.headerContainer {
+    width: 200vw;
+    height: 80px;
+    padding: 1rem 2.5rem;
+
+    background-color: utilities.$gray-color;
+    box-shadow: 0px 15px 33px -20px rgba(78,78,78,0.75);
+
+    display: flex;
+    align-items: center;
+    gap: calc(2.5rem + 5rem); // 2.5rem para a centralização da imagem + 2.5*2rem para padding da sessão da direita.
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+
+    transition: transform 2s ease-in-out;
+
+    .headerContainer__deliverizeLogo {
+        width: calc(100% - 13.5rem);
+
+        display: flex;
+        justify-content: center;
+        
+        img {
+            width: 9.375rem;
+        }
+    }
+    
+    .headerContainer__userInfo {
+        width: 100%;
+        
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .userInfo__location {
+            width: 165px;
+            max-width: calc(230px - 1rem);
+            padding: 0.5rem;
+
+            border-radius: 4px;
+            background-color: utilities.$white-color;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+            label {
+                color: utilities.$red-color;
+            }
+        }
+
+        .userInfo__searchbar {
+            min-width: 155px;
+            width: 100%;
+            max-width: calc(354px - 2rem - 2px); // Tamanho - Padding - Borda
+            padding: 1rem;
+
+            display: none;
+
+            border-radius: 4px;
+            border: 1px solid utilities.$red-color-2;
+            color: utilities.$grayDarker-color-2;
+            outline: none;
+            
+            &::placeholder {
+                color: utilities.$grayDarker-color-2;
+            }
+        }
+
+        .userInfo__buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            
+            .buttons__container {
+                display: flex;
+                align-items: center;
+                gap: 0.625rem;
+
+                cursor: pointer;
+                position: relative;
+
+                img {
+                    width: 1.5rem;
+                }
+                
+                span {
+                    font-size: 12px;
+                    color: utilities.$red-color-2;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 425px) {
+
+        .headerContainer__userInfo {
+            gap: 1.5rem;
+        }
+
+        .userInfo__location {
+            width: 100% !important;
+        }
+        
+    }
+    
+    @media screen and (min-width: 768px) {
+        width: calc(100vw - 5rem);
+        gap: 10%;
+
+        .headerContainer__deliverizeLogo {
+            display: block;
+            width: min-content;
+
+            img {
+                width: 14rem;
+            }
+        }
+
+        .headerContainer__userInfo {
+            justify-content: flex-end;
+
+            .userInfo__searchbar {
+                display: block;
+            }
+
+            .userInfo__buttons {
+                gap: 0.5rem !important;
+            }
+        } 
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        .userInfo__buttons {
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+
+            .buttons__container {
+
+                img {
+                    width: 2rem !important;
+                }
+                
+                span {
+                    font-size: 16px !important;
+                }
+            }
+        }
+    }
+}
+
+.headerContainer__rightArrowSmallDevice {
+    position: absolute;
+    right: 3.5rem;
+
+    transform: rotate(180deg);
+}
+
+.headerContainer__leftArrowSmallDevice {
+    position: absolute;
+    left: 1rem;
+}
+
+.headerContainer__leftArrowSmallDevice, .headerContainer__rightArrowSmallDevice {
+    img {
+        width: 1.5rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+.buttons__cartQuantity {
+    width: 1rem;
+    height: 1rem;
+    padding: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: utilities.$orange-color;
+    border-radius: 50%;
+    
+    position: absolute;
+    top: 9px;
+    right: 46px;
+
+    span {
+        font-size: 10px !important;
+        color: utilities.$white-color !important;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        top: -12px;
+        right: 62px;
+        
+        span {
+            font-size: 12px !important;
+        }
+    }
+}

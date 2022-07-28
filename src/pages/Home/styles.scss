@@ -1,0 +1,61 @@
+@use "../../styles/utilities";
+
+.homePageContainer {
+    padding: 1rem 2.5rem;
+    @include utilities.PagesMarginTop;
+}
+
+.homePageContainer__title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: utilities.$red-color;
+}
+
+.homePageContainer__ProductList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    
+    @media screen and (min-width: 768px) {
+        justify-content: space-between;
+    }
+}
+
+.ProductList__Product {
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+
+    border: 1px solid utilities.$grayDarker-color-2;
+    border-radius: 4px;
+    padding: 0.5rem;
+    color: utilities.$grayDarker-color;
+
+    img {
+        width: 7.5rem;
+        height: 7.5rem;
+        object-fit: contain;
+        border: 2px solid utilities.$grayDarker-color;
+    }
+
+    div {
+        width: 100%;
+        height: 50px;
+        
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        span {
+            color: utilities.$orange-color;
+            font-weight: 500;
+        }
+    }
+
+}

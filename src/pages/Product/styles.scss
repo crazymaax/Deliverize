@@ -1,0 +1,394 @@
+@use "../../styles/utilities";
+
+.ProductPageContainer {
+    width: calc(100% - 2rem); // Alinhar a caixa | 100% - os paddings esquerda e direita.
+    padding: 1rem;
+    @include utilities.PagesMarginTop;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        //padding: 1rem 4.125rem; // Foi decidido fazer margin nos elementos internos do que aplicar padding em ProductPageContainer pois assim a página ficará maior que o vw. 
+        gap: calc(7rem - 4.125rem);
+    }
+}
+
+.ProductPageContainer__ProductInfo {
+    width: 100%;
+    max-width: 597px;
+    padding: 1.5rem 0px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    color: utilities.$grayDarker-color;
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 0;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        margin-left: 3.125rem; // Foi decidido fazer margin nos elementos internos do que aplicar padding em ProductPageContainer pois assim a página ficará maior que o vw. 
+    }
+}
+
+.ProductInfo__details {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    strong {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+    
+    .details__price {
+        font-size: 14px;
+        color: utilities.$orangeDarker-color;
+    }
+    
+    .details__price--dashed {
+        margin-left: 1rem;
+
+        text-decoration: line-through;
+        color: utilities.$grayDarker-color;
+    }
+
+    @media screen and (min-width: 768px) {
+
+        .details__price {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        strong {
+            font-size: 28px;
+        }
+    
+        p {
+            font-size: 20px;
+        }
+
+        .details__price {
+            font-size: 32px;
+        }
+    }
+}
+
+
+/* ESTILIZAÇÃO DOS ADICIONAIS */
+
+.ProductPageContainer__additional {
+
+    width: calc(100% - 2rem);
+    max-width: 439px;
+    padding: 1rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    border: 1px solid utilities.$grayDarker-color-2;
+    border-radius: 8px;
+    
+    @media screen and (min-width: 1024px) {
+        padding: 2rem;
+        margin-right: 3.125rem; // Foi decidido fazer margin nos elementos internos do que aplicar padding em ProductPageContainer pois assim a página ficará maior que o vw. 
+    }
+}
+
+.additional__yellowContainer {
+    width: calc(100% - 2rem);
+
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    background-color: utilities.$yellowLight-color;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.additional__yellowContainer--ingredients {
+
+    strong {
+        margin-bottom: 0.5rem;
+
+        font-weight: 500;
+        font-size: 14px;
+
+        color: utilities.$grayDarker-color;
+    }
+    
+    span {
+        font-size: 12px;
+        color: utilities.$yellow-color;
+    }
+
+}
+
+.additional__cutleryContainer {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    
+    .cutleryContainer__cutleryOptions {
+        width: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        
+        label {
+            width: 100%;
+            
+            display: flex;
+            
+            font-weight: 500;
+            cursor: pointer;
+            
+            position: relative;
+            overflow: hidden;
+            
+            input {
+              position: absolute;
+              left: -9999px;
+        
+              &:checked + span::after  {
+                background-color: utilities.$yellowDarker-color;
+        
+                &:before {
+                  box-shadow: inset 0 0 0 1em utilities.$yellow-color;
+                }
+              }
+            }
+        
+            span {
+                width: 100%;
+                padding: 0.375em 0.75em 0.375em 0.375em;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                border-radius: 99em;
+                font-weight: 400;
+                color: utilities.$grayDarker-color;
+        
+                transition: 0.25s ease;
+                
+                &::after {
+                    content: "";
+        
+                    width: 1.5em;
+                    height: 1.5em;
+                    margin-right: 0.375em;
+                    
+                    border-radius: 50%;
+                    background-color: utilities.$white-color;
+                    box-shadow: inset 0 0 0 0.125em utilities.$yellowDarker-color;
+        
+                    display: flex;
+                    flex-shrink: 0;
+        
+                    transition: 0.25s ease;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 0.5rem;
+
+        flex-direction: row;   
+        gap: 0;
+
+        .cutleryContainer__cutleryOptions {
+            padding: 0.5rem 1rem;
+            background-color: utilities.$yellowLight-color;
+            flex-direction: row;
+
+            input {
+                &:checked + span {
+                    background-color: utilities.$yellowDarker-color;
+            
+                    &:before {
+                      box-shadow: inset 0 0 0 1em utilities.$yellow-color;
+                    }
+                }
+                
+            }
+
+            span {
+                font-weight: 500 !important;
+                
+                &::after {
+                    display: none !important;
+                }
+
+                &:hover {
+                    background-color: utilities.$yellow-color;
+                }
+
+                &::before {
+                    content: "";
+        
+                    width: 1.5em;
+                    height: 1.5em;
+                    margin-right: 0.375em;
+                    
+                    border-radius: 50%;
+                    background-color: utilities.$white-color;
+                    box-shadow: inset 0 0 0 0.125em utilities.$yellowDarker-color;
+        
+                    display: flex;
+                    flex-shrink: 0;
+        
+                    transition: all 0.25s ease;
+                }
+            }
+        }
+    }
+}
+
+.additional__yellowContainer--cutlery {
+    margin-bottom: 0;
+    
+    color: utilities.$grayDarker-color;
+    
+    font-weight: 500;
+    font-size: 14px;
+    
+    
+    
+    @media screen and (min-width: 768px) {
+        flex-direction: row;   
+        align-items: center;
+    }
+}
+
+.additional__item {
+    width: 100%;
+    height: 72px;
+    padding-bottom: 1rem;
+
+    display: flex;
+
+    border-bottom: 1px solid utilities.$yellow-color;
+}
+
+.item__data {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-size: 14px;
+    
+    label {
+        font-weight: 500;
+        color: utilities.$grayDarker-color;
+    }
+    
+    span {
+        color: utilities.$orange-color;
+    }
+}
+
+.item__ammount {
+    display: flex;
+
+    margin: auto 0;
+    
+    border-radius: 5px;
+    border: 1px solid utilities.$orange-color;
+    
+    input {
+        width: 1rem;
+
+        display: flex;
+        align-items: center;
+        
+        text-align: end;
+        font-size: 14px;
+        color: utilities.$grayDarker-color;
+
+        border: transparent;
+        outline: none;
+    }
+
+    button {
+        background-color: transparent;
+        border: transparent;
+
+        &:disabled {
+            img {
+                filter: grayscale(90%);
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        
+        input {
+            width: 2rem;
+        }
+    }
+}
+
+.additional__footer {
+    width: 100%;
+
+    display: flex;
+    gap: 0.5rem;
+    
+    button[type="submit"] {
+        width: 100%;
+        padding: 1rem;
+        
+        border: transparent;
+        border-radius: 4px;
+        background-color: utilities.$orange-color;
+        
+        color: utilities.$white-color;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .item__ammount {
+        margin: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+        gap: 1rem;
+    }
+}
