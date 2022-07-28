@@ -6,11 +6,11 @@ import cartSubIcon from "../../assets/cartSubIcon.svg"
 import cartAddIcon from "../../assets/cartAddIcon.svg"
 
 import { useParams } from "react-router-dom";
-import ReactLoading from 'react-loading';
 
 import { useProducts } from "../../providers/Products";
 import { formatPrice } from "../../utils/format";
 import PopupModal from "../../components/Modals/PopupModal";
+import Loading from "../../components/Loading";
 
 function Product() {
 
@@ -205,7 +205,7 @@ function Product() {
                     )}
 
                 </>
-            ) : <ReactLoading type={"spin"} color={"red"} height={'20%'} width={'20%'} />}
+            ) : <Loading />}
         </main>
     )
 }
