@@ -13,7 +13,7 @@
 
 A aplicação foi realizada para o teste de front-end da empresa <a href="https://teamsoft.com.br/">TeamSoft Tecnologia e Sistemas Ltda ME.</a> 
 
-A aplicação consiste em um E-commerce que o usuário pode adicionar o produto customizado com adicionais que preferir, respeitando o limite imposto pelo produto, no caso da imagem a cima, se refere ao total de 8 adicionais.
+A aplicação consiste em um E-commerce que o usuário pode adicionar o produto com adicionais que preferir, respeitando o limite determinado, no caso da imagem a cima, se refere ao total de 8 adicionais.
 #
 
 ## 🧨 Tecnologias utilizadas
@@ -39,7 +39,7 @@ Ao acessar o site, o usuário poderá escolher um produto da loja Deliverize.
 <img src="https://user-images.githubusercontent.com/95248203/181599501-36ddd50e-9e09-4912-a031-f8e7dda4cc50.jpg" alt="Página inicial" title="Página inicial">
 </div>
 
-⚠ A API fornecida disponibilizava de apenas um único produto, que o mesmo havia problemas no retorno do link da imagem, portanto foi utilizado imagens estáticas.
+⚠ A API fornecida disponibilizava apenas um único produto, que o mesmo havia problemas no retorno do link da imagem, portanto foi utilizado imagens estáticas.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/95248203/181602616-c8c2a7e8-fddd-486b-9de3-ee62a46901ac.jpg" alt="Versão para celular" title="Versão para celular">
@@ -50,7 +50,9 @@ Ao acessar o site, o usuário poderá escolher um produto da loja Deliverize.
 </div>
 
 
-Ao acessar a página do produto, o usuário terá maiores informações sobre o produto como também a lista de possíveis adicionais. Realizando a confirmação do pedido, aparecerá uma mensagem com as informações na parte superior do carrinho.
+Ao acessar a página do produto, o usuário terá maiores informações do item, como também a lista de possíveis adicionais. 
+
+Realizando a confirmação do pedido, aparecerá uma mensagem com as opções selecionadas na parte superior da página.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/95248203/181612503-b71bd4ad-880f-48dc-ae28-64cc5d0fcc8d.png" alt="Popup do produto" title="Popup do produto">
