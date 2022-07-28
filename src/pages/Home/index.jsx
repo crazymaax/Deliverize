@@ -3,7 +3,9 @@ import NoImage from "../../assets/noImage.png"
 import HamburgerImage from "../../assets/hamburger.png"
 
 import { Link } from "react-router-dom";
+
 import { useProducts } from "../../providers/Products";
+import { formatPrice } from "../../utils/format";
 
 import ReactLoading from 'react-loading';
 
@@ -29,7 +31,7 @@ function Home() {
                             {/* <img src={product.url_image} alt={product.nm_product} /> */}
                             <div>
                                 <strong>{product.nm_product}</strong>
-                                <span>R$ {product.vl_discount}</span>
+                                <span>{formatPrice(product.vl_discount)}</span>
                             </div>
                         </Link>
                     ))}
@@ -42,7 +44,7 @@ function Home() {
                         <img src={NoImage} />
                         <div>
                             <strong>Outro Produto</strong>
-                            <span>R$ 10</span>
+                            <span>{formatPrice(10)}</span>
                         </div>
                     </Link>
 
@@ -52,7 +54,7 @@ function Home() {
                         <img src={NoImage} />
                         <div>
                             <strong>Outro Produto</strong>
-                            <span>R$ 10</span>
+                            <span>{formatPrice(10)}</span>
                         </div>
                     </Link>
                     <Link
@@ -61,7 +63,7 @@ function Home() {
                         <img src={NoImage} />
                         <div>
                             <strong>Outro Produto</strong>
-                            <span>R$ 10</span>
+                            <span>{formatPrice(10)}</span>
                         </div>
                     </Link>
                 </div>
