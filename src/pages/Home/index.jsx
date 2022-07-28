@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 
 import { useProducts } from "../../providers/Products";
 import { formatPrice } from "../../utils/format";
-
-import ReactLoading from 'react-loading';
+import Loading from "../../components/Loading";
 
 function Home() {
 
@@ -67,7 +66,7 @@ function Home() {
                         </div>
                     </Link>
                 </div>
-            ) : <ReactLoading type={"spin"} color={"red"} height={'20%'} width={'20%'} />}
+            ) : <Loading />}
         </main>
     )
 }
