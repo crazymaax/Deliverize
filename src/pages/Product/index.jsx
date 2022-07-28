@@ -10,10 +10,11 @@ import ReactLoading from 'react-loading';
 
 import { useProducts } from "../../providers/Products";
 import { formatPrice } from "../../utils/format";
+import PopupModal from "../../components/Modals/PopupModal";
 
 function Product() {
 
-    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, setIsCartModalOpen, cart, setCart, updateProductAmount } = useProducts()
+    const { listOfProducts, actualProduct, setActualProduct, currentAdditionals, setAdditionals, isCartModalOpen, setIsCartModalOpen, cart, setCart, updateProductAmount } = useProducts()
 
     const [quantityOfItens, setQuantityOfItens] = useState(1)
     const [withCutlery, setWithCutlery] = useState(false)
@@ -91,8 +92,8 @@ function Product() {
 
                             <div>
                                 <span className="details__price">{formatPrice(actualProduct.vl_discount)}</span>
-                                <span className="details__price details__price--dashed"> 
-                                {formatPrice(actualProduct.vl_price)}</span>
+                                <span className="details__price details__price--dashed">
+                                    {formatPrice(actualProduct.vl_price)}</span>
                             </div>
                         </div>
 
@@ -194,6 +195,11 @@ function Product() {
                             <button type="submit">Adicionar</button>
                         </div>
                     </form>
+
+                    {isCartModalOpen && (
+                        <PopupModal />
+                    )}
+                    
                 </>
             ) : <ReactLoading type={"spin"} color={"red"} height={'20%'} width={'20%'} />}
         </main>

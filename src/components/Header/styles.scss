@@ -1,6 +1,7 @@
 @use "../../styles/utilities";
 
 .headerContainer {
+    width: 200vw;
     height: 80px;
     padding: 1rem 2.5rem;
 
@@ -9,52 +10,39 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    gap: calc(2.5rem + 5rem); // 2.5rem para a centralização da imagem + 2.5*2rem para padding da sessão da direita.
+
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     z-index: 1;
 
+    transition: transform 2s ease-in-out;
+
     .headerContainer__deliverizeLogo {
-        width: 100%;
-/*         position: absolute;
-        left: 15%; */
+        width: calc(100% - 13.5rem);
+
+        display: flex;
+        justify-content: center;
         
         img {
-            width: 14rem;
+            width: 9.375rem;
         }
-    }
-
-    .headerContainer__leftArrowSmallDevice {
-        position: absolute;
-        left: 1rem;
-    }
-    
-    .headerContainer__leftArrowSmallDevice, .headerContainer__rightArrowSmallDevice {
-        img {
-            width: 1.5rem;
-        }
-
     }
     
     .headerContainer__userInfo {
         width: 100%;
-        max-width: 850px;
+        
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-
-/*         position: absolute;
-        left: 100vw; */
-
-        position: relative;
+        gap: 0.5rem;
 
         .userInfo__location {
-            width: 100%;
-            max-width: 230px;
+            width: 165px;
+            max-width: calc(230px - 1rem);
             padding: 0.5rem;
+
             border-radius: 4px;
             background-color: utilities.$white-color;
             
@@ -70,9 +58,12 @@
         }
 
         .userInfo__searchbar {
+            min-width: 155px;
             width: 100%;
-            max-width: 354px;
+            max-width: calc(354px - 2rem - 2px); // Tamanho - Padding - Borda
             padding: 1rem;
+
+            display: none;
 
             border-radius: 4px;
             border: 1px solid utilities.$red-color-2;
@@ -86,33 +77,106 @@
 
         .userInfo__buttons {
             display: flex;
-            align-items: center;
-            gap: 0.625rem;
-
-            position: relative;
-            cursor: pointer;
-
-            img {
-                width: 2rem;
-            }
+            flex-direction: column;
+            gap: 0.25rem;
             
-            span {
-                color: utilities.$red-color-2;
+            .buttons__container {
+                display: flex;
+                align-items: center;
+                gap: 0.625rem;
+
+                cursor: pointer;
+                position: relative;
+
+                img {
+                    width: 1.5rem;
+                }
+                
+                span {
+                    font-size: 12px;
+                    color: utilities.$red-color-2;
+                }
             }
         }
     }
+
+    @media screen and (min-width: 425px) {
+
+        .headerContainer__userInfo {
+            gap: 1.5rem;
+        }
+
+        .userInfo__location {
+            width: 100% !important;
+        }
+        
+    }
     
     @media screen and (min-width: 768px) {
-        justify-content: space-between;
+        width: calc(100vw - 5rem);
+        gap: 10%;
 
-        .headerContainer__rightArrowSmallDevice, .headerContainer__leftArrowSmallDevice {
-            display: none;
+        .headerContainer__deliverizeLogo {
+            display: block;
+            width: min-content;
+
+            img {
+                width: 14rem;
+            }
         }
 
         .headerContainer__userInfo {
-            display: flex;
+            justify-content: flex-end;
+
+            .userInfo__searchbar {
+                display: block;
+            }
+
+            .userInfo__buttons {
+                gap: 0.5rem !important;
+            }
+        } 
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        .userInfo__buttons {
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+
+            .buttons__container {
+
+                img {
+                    width: 2rem !important;
+                }
+                
+                span {
+                    font-size: 16px !important;
+                }
+            }
         }
-        
+    }
+}
+
+.headerContainer__rightArrowSmallDevice {
+    position: absolute;
+    right: 3.5rem;
+
+    transform: rotate(180deg);
+}
+
+.headerContainer__leftArrowSmallDevice {
+    position: absolute;
+    left: 1rem;
+}
+
+.headerContainer__leftArrowSmallDevice, .headerContainer__rightArrowSmallDevice {
+    img {
+        width: 1.5rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        display: none;
     }
 }
 
@@ -129,20 +193,20 @@
     border-radius: 50%;
     
     position: absolute;
-    top: -12px;
-    right: 61px;
+    top: 9px;
+    right: 46px;
 
     span {
-        font-size: 10px;
+        font-size: 10px !important;
         color: utilities.$white-color !important;
     }
-}
-
-.rolled {
-    transition: transform 2s ease-in-out;
-    transform: translate(-100vh,0px);
-
-    .headerContainer__userInfo {
+    
+    @media screen and (min-width: 1024px) {
+        top: -12px;
+        right: 62px;
         
+        span {
+            font-size: 12px !important;
+        }
     }
 }

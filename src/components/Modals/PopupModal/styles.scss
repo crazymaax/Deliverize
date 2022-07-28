@@ -24,10 +24,10 @@
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
 
     position: fixed;
-    top: 90px;
-    right: 1%;
+    top: 85px;
+    right: 10%;
 
-    z-index: 1;
+    z-index: 2;
 
     animation: fade-in-top 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
@@ -35,7 +35,7 @@
         content: "";
         position: absolute;
         top: -8px;
-        right: 50%;
+        right: 11%;
 
         width: 0;
         height: 0;
@@ -43,6 +43,29 @@
         border-right: 8px solid transparent;
 
         border-bottom: 8px solid utilities.$orange-color;
+    }
+
+    @media screen and (min-width: 375px) {
+
+        &::before {
+            right: 35%;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        top: 90px;
+        right: 1%;
+
+        &::before {
+            right: 25%;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        &::before {
+            right: 50%;
+        }
     }
 }
 
