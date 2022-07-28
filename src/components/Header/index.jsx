@@ -43,7 +43,8 @@ function Header() {
 
                 <div className="userInfo__location">
                     <label>Entrega:</label>
-                    <span>Rua tal</span>
+                    <span>R. Antonio Braune, 222</span>
+                    {/* <span>{user.address}</span> */}
                 </div>
 
                 <input
