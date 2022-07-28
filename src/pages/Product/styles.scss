@@ -12,7 +12,12 @@
 
     @media screen and (min-width: 768px) {
         flex-direction: row;
-        padding: 1rem 2.5rem;
+        gap: 1rem;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        //padding: 1rem 4.125rem; // Foi decidido fazer margin nos elementos internos do que aplicar padding em ProductPageContainer pois assim a página ficará maior que o vw. 
+        gap: calc(7rem - 4.125rem);
     }
 }
 
@@ -30,6 +35,14 @@
     img {
         width: 100%;
         border-radius: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 0;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        margin-left: 3.125rem; // Foi decidido fazer margin nos elementos internos do que aplicar padding em ProductPageContainer pois assim a página ficará maior que o vw. 
     }
 }
 
@@ -63,7 +76,14 @@
     }
 
     @media screen and (min-width: 768px) {
-    
+
+        .details__price {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+
         strong {
             font-size: 28px;
         }
@@ -84,6 +104,7 @@
 .ProductPageContainer__additional {
 
     width: calc(100% - 2rem);
+    max-width: 439px;
     padding: 1rem;
     
     display: flex;
@@ -94,8 +115,9 @@
     border: 1px solid utilities.$grayDarker-color-2;
     border-radius: 8px;
     
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
         padding: 2rem;
+        margin-right: 3.125rem; // Foi decidido fazer margin nos elementos internos do que aplicar padding em ProductPageContainer pois assim a página ficará maior que o vw. 
     }
 }
 
